@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,17 +16,28 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { float32ndarray, typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Compute the standard deviation of a one-dimensional single-precision floating-point ndarray using a two-pass algorithm.
+* Computes the standard deviation of a one-dimensional single-precision floating-point ndarray using a two-pass algorithm.
 *
-* @module @stdlib/stats-base-ndarray-sstdevpn
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray specifying the degrees of freedom adjustment.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns standard deviation
 *
 * @example
 * var Float32Vector = require( '@stdlib/ndarray-vector-float32' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-* var sstdevpn = require( '@stdlib/stats-base-ndarray-sstdevpn' );
 *
 * var x = new Float32Vector( [ 1.0, -2.0, 2.0 ] );
 * var correction = scalar2ndarray( 1.0, {
@@ -36,12 +47,9 @@
 * var v = sstdevpn( [ x, correction ] );
 * // returns ~2.0817
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function sstdevpn<T extends typedndarray<number> = typedndarray<number>>( arrays: [ float32ndarray, T ] ): number;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = sstdevpn;
